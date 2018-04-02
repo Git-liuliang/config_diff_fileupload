@@ -1,0 +1,57 @@
+---
+- hosts: all
+  gather_facts: False
+  remote_user: configer
+  sudo: yes
+  tasks:
+    - name: cootalk-gateway
+      copy: src={{dir}}/usr/local/tomcat/webapps/CooTalk-GateWay/WEB-INF/classes/config/{{item}}  dest=/usr/local/tomcat/webapps/CooTalk-GateWay/WEB-INF/classes/config/
+      with_items:
+        - camtalk-conf.properties
+        - db.properties
+        - hessian-conf.properties
+    
+
+    - name: CooTalk_Moments
+      copy: src={{dir}}/usr/local/tomcat/webapps/CooTalk_Moments/WEB-INF/classes/config/{{item}}  dest=/usr/local/tomcat/webapps/CooTalk_Moments/WEB-INF/classes/config/
+      with_items:
+        - notify-conf.properties
+        - db.properties
+        - hessian-conf.properties
+
+    - name: CooTalk_Service
+      copy: src={{dir}}/usr/local/tomcat/webapps/CooTalk_Service/WEB-INF/classes/config/{{item}}  dest=/usr/local/tomcat/webapps/CooTalk_Service/WEB-INF/classes/config/
+      with_items:
+        - cootalk-conf.properties
+        - db.properties
+        - hessian-conf.properties
+
+    - name: file-server
+      copy: src={{dir}}/usr/local/tomcat/webapps/file_server/WEB-INF/classes/config/{{item}}  dest=/usr/local/tomcat/webapps/file_server/WEB-INF/classes/config/
+      with_items:
+        - fdfs_client.conf
+        - db.properties
+        - hessian-conf.properties
+        - fileSystem-conf.properties
+
+    - name: r
+      copy: src={{dir}}/usr/local/tomcat/webapps/r/WEB-INF/classes/config/{{item}}  dest=/usr/local/tomcat/webapps/r/WEB-INF/classes/config/
+      with_items:
+        - userInvite-conf.properties
+        - register-conf.properties
+        - hessian-conf.properties
+        - db.properties
+
+    - name: Ucenter
+      copy: src={{dir}}/usr/local/tomcat/webapps/Ucenter/WEB-INF/classes/config/{{item}}  dest=/usr/local/tomcat/webapps/Ucenter/WEB-INF/classes/config/
+      with_items:
+        - cootalk-conf.properties
+        - db.properties
+        - hessian-conf.properties
+
+    - name: wifi_share
+      copy: src={{dir}}/usr/local/tomcat/webapps/wifi_share/WEB-INF/classes/config/{{item}}  dest=/usr/local/tomcat/webapps/wifi_share/WEB-INF/classes/config/
+      with_items:
+        - password.properties
+        - db.properties
+        - hessian-conf.properties
